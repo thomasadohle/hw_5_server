@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>title</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="login.template.client.css">
+</head>
+<body>
+	<div class="container" id="big-container">
+		<form action="">
+			<div class="form-group row " >
+				<div class="col-sm-2 col-med-2 text-left col-form-label" id="c">
+					<h3>Profile</h3>
+				</div>
+				
+			</div>
+			<div class="form-group row readonly" id="username-row">
+				<label for="username" class="col-sm-2 col-form-label text-right"
+					id="username-label" > Username </label>
+				<div class="col-sm-6
+							">
+					<input class="form-control" id="username" placeholder="Alice" readonly>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="phone" class="col-sm-2 col-form-labe text-right">
+					Phone </label>
+				<div class="col-sm-6">
+					<input type="phone" class="form-control"
+						id="phone" placeholder="(617) 123-4567">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="email" class="col-sm-2 col-form-labe text-right">
+					Email </label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control"
+						id="email" placeholder="jdoe@host.com">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="password" class="col-sm-2 col-form-labe text-right">
+					Role </label>
+				<div class="col-sm-6">
+					<select name="role" class="form-control">
+						<option value="FACULTY">
+							Faculty
+						</option>
+						<option value="STUDENT">
+							Student
+						</option>
+						<option value="ADMIN">
+							Admin
+						</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="dob" class="col-sm-2 col-form-labe text-right">
+					Date of Birth </label>
+				<div class="col-sm-6">
+					<input type="date" class="form-control"
+						id="dob" placeholder="mm/dd/yy">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label"></label>
+				<div class="col-sm-6">
+					<button class="btn btn-success btn-block">Update</button>
+					<div class="row">
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label"></label>
+				<div class="col-sm-6">
+					<button class="btn btn-danger btn-block">Logout</button>
+					<div class="row">
+					</div>
+				</div>
+			</div>
+			
+			
+		</form>
+	</div>
+</body>
+</html>
