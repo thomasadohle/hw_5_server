@@ -1,0 +1,49 @@
+:root {
+	--pg-bg-color: #d0e1e1;
+}
+
+body{
+	background: var(--pg-bg-color);
+}
+
+#wbdv-title{
+	font-size: 20px;
+	border: solid green 2px;
+}
+
+#wbdv-new-course{
+	border: solid red 2px;
+}
+
+
+#wbdv-top-nav{
+	border: solid blue 1px;
+	background: #6600cc;
+	color: white;
+}
+
+#wbdv-page-container{
+	border: solid orange 5px;
+	background: var(--pg-bg-color);
+}
+
+#wbdv-new-course-title{
+	background-color: #ccccff;
+}
+
+/*
+#wbdv-add-button {
+  position: absolute;
+  left: 0px;
+  padding: 5px;
+} */
+
+#wbdv-table-container{
+	border: solid purple 1px;
+	background: white;
+}
+
+#wbdv-page-background{
+	background: var(--pg-bg-color);
+}
+
