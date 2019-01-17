@@ -10,7 +10,10 @@
 <body>
   <div class="container-fluid">
     <div class="row col-12" id="wbdv-top-nav">
-    	<div class="col-lg-3 col-sm-10" id="wbdv-course-title">CS5610 - Web Dev</div>
+    	<div class="col-lg-10 col-sm-8" id="wbdv-course-title">CS5610 - Web Dev</div>
+    	<div class="col-lg-2 col-sm-2">
+    		<button type="button" class="btn btn-success" id="wbdv-add-widget-button">Add Widget</button>
+    	</div>
     </div>
     <div class="row">
       <div class="col-2 wbdv-content-panel" id = "wbdv-module-list-container">
@@ -49,7 +52,7 @@
 	        </ul>
         </div>
         <div class = "row col-12 container" id = "wbdv-widget-container">
-        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget" data-name="sample-heading-widget">
         		<div class="row col-lg-12 wbdv-widget-first-row">
         			<div class="col-lg-6 wbdv-widget-title">
         				<h3>Heading Widget</h3>
@@ -100,7 +103,7 @@
         		</div>
         	</div>
         	
-        	<div class = "row col-10 container wbdv-paragraph-widget centered wbdv-widget">
+        	<div class = "row col-10 container wbdv-paragraph-widget centered wbdv-widget" data-name="sample-paragraph-widget">
         		<div class="row col-lg-12 wbdv-widget-first-row">
         			<div class="col-lg-6 wbdv-widget-title">
         				<h3>Paragraph Widget</h3>
@@ -113,10 +116,11 @@
         			</div>
         			<div class="col-lg-3 wbdv-widget-select-widget-type">
         				<select class="custom-select custom-select-lg mb-3">
-						  <option selected>Heading</option>
-						  <option value="1">Paragraph</option>
+						  <option selected>Paragraph</option>
+						  <option value="1">Heading</option>
 						  <option value="2">List</option>
 						  <option value="3">Image</option>
+						  <option value="4">Link</option>
 						</select>
         			</div>
         			<div class="col-lg-1">
@@ -143,7 +147,7 @@
         		</div>
         	</div>
         	
-        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget" data-name="sample-list-widget">
         		<div class="row col-lg-12 wbdv-widget-first-row">
         			<div class="col-lg-6 wbdv-widget-title">
         				<h3>List Widget</h3>
@@ -156,10 +160,11 @@
         			</div>
         			<div class="col-lg-3 wbdv-widget-select-widget-type">
         				<select class="custom-select custom-select-lg mb-3">
-						  <option selected>Heading</option>
-						  <option value="1">Paragraph</option>
+						  <option selected>List</option>
+						  <option value="1">Heading</option>
 						  <option value="2">List</option>
 						  <option value="3">Image</option>
+						  <option value="4">Link</option>
 						</select>
         			</div>
         			<div class="col-lg-1">
@@ -199,7 +204,7 @@
         		</div>
         	</div>
         	
-        		<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        		<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget" data-name="sample-image-widget">
         		<div class="row col-lg-12 wbdv-widget-first-row">
         			<div class="col-lg-6 wbdv-widget-title">
         				<h3>Image Widget</h3>
@@ -212,10 +217,11 @@
         			</div>
         			<div class="col-lg-3 wbdv-widget-select-widget-type">
         				<select class="custom-select custom-select-lg mb-3">
-						  <option selected>Heading</option>
-						  <option value="1">Paragraph</option>
+						  <option selected>Image</option>
+						  <option value="1">Heading</option>
 						  <option value="2">List</option>
 						  <option value="3">Image</option>
+						  <option value="4">Link</option>
 						</select>
         			</div>
         			<div class="col-lg-1">
@@ -240,7 +246,7 @@
         		</div>
         	</div>
         	
-        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget" data-name="sample-link-widget">
         		<div class="row col-lg-12 wbdv-widget-first-row">
         			<div class="col-lg-6 wbdv-widget-title">
         				<h3>Link Widget</h3>
@@ -253,10 +259,11 @@
         			</div>
         			<div class="col-lg-3 wbdv-widget-select-widget-type">
         				<select class="custom-select custom-select-lg mb-3">
-						  <option selected>Heading</option>
+						  <option selected>Link</option>
 						  <option value="1">Paragraph</option>
 						  <option value="2">List</option>
 						  <option value="3">Image</option>
+						  <option value="4">Heading</option>
 						</select>
         			</div>
         			<div class="col-lg-1">

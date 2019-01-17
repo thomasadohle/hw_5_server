@@ -34,13 +34,14 @@
 }
 
 #wbdv-widget-container{
-	border: solid blue 2px;
+	
 	margin: 0 auto;
 }
 
 .wbdv-widget{
-	border: solid green 1px;
+	border: solid #576884 2px;
 	margin: 0 auto;
+	background: #c5d2e8;
 
 }
 
@@ -74,4 +75,8 @@
 .wbdv-image-widget-image{
 	width: 60%;
 	height: 60%;
+}
+
+#wbdv-add-widget-button{
+	margin-top: 10px;
 }
