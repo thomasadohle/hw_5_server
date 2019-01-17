@@ -1,0 +1,77 @@
+#wbdv-module-list-container {
+	background: #21252d;
+}
+
+
+.wbdv-module-list-item {
+	margin: 10px 0 10px 0;
+	background: #576884;
+}
+
+#wbdv-top-nav{
+	background: #576884;
+}
+
+#wbdv-course-title{
+	padding:10px;
+	color:white;
+	font-size: 1.5em;
+}
+
+.wbdv-content-panel {
+	padding-bottom: 100%;
+	margin-bottom: -100%;
+}
+
+.wbdv-lesson-link {
+	background: #21252d;
+	border: solid #576884 1px;
+}
+
+.wbdv-topic-link {
+	background: #576884;
+	border: solid white 1px;
+}
+
+#wbdv-widget-container{
+	border: solid blue 2px;
+	margin: 0 auto;
+}
+
+.wbdv-widget{
+	border: solid green 1px;
+	margin: 0 auto;
+
+}
+
+.wbdv-widget-move-icon{
+	background: yellow;
+	border: solid #576884 1px;
+	margin-right: 2px;
+	margin-left: 2px; 
+	margin-top: 2px;
+	margin-bottom: 2px;
+	vertical-algin: center;
+	padding: 5px;
+}
+
+.wbdv-widget-delete-icon{
+	background: red;
+	border: solid #576884 1px;
+	margin-right: 2px;
+	margin-left: 2px; 
+	margin-top: 2px;
+	margin-bottom: 2px;
+	vertical-algin: center;
+	padding: 5px;
+}
+
+.wbdv-widget{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.wbdv-image-widget-image{
+	width: 60%;
+	height: 60%;
+}

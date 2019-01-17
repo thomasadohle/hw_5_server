@@ -1,0 +1,294 @@
+<html>
+<head>
+<title>Course Editor</title>
+<link rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet"
+	href="course-editor.style.client.css">
+	<script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row col-12" id="wbdv-top-nav">
+    	<div class="col-lg-3 col-sm-10" id="wbdv-course-title">CS5610 - Web Dev</div>
+    </div>
+    <div class="row">
+      <div class="col-2 wbdv-content-panel" id = "wbdv-module-list-container">
+        <ul class="nav flex-column nav-pills" >
+          <a class="nav-link active wbdv-module-selector wbdv-module-list-item" href="#" >Module 1 - jQuery</a>
+          <a class="nav-link wbdv-module-list-item" href="#">Module 2 - React</a>
+          <a class="nav-link wbdv-module-list-item" href="#">Module 3 - Redux</a>
+          <a class="nav-link wbdv-module-list-item" href="#">Module 4 - Respect</a>
+        </ul>
+      </div>
+      <div class="col-10 wbdv-content-panel">
+      	
+        <ul class="nav nav-tabs">
+          <li class="nav-item wbdv-lesson-link">
+            <a class="nav-link active " href="#">Lesson 1</a>
+          </li>
+          <li class="nav-item wbdv-lesson-link">
+            <a class="nav-link" href="#">Lesson 2</a>
+          </li>
+          <li class="nav-item wbdv-lesson-link">
+            <a class="nav-link" href="#">Lesson 3</a>
+          </li>
+        </ul>
+        <br />
+        <div class="row col-12">
+	        <ul class="nav nav-pills col-lg-5 col-sm-12">
+	          <li class="nav-item wbdv-topic-link">
+	            <a class="nav-link active" href="#">Topic 1</a>
+	          </li>
+	          <li class="nav-item wbdv-topic-link">
+	            <a class="nav-link" href="#">Topic 2</a>
+	          </li>
+	          <li class="nav-item wbdv-topic-link">
+	            <a class="nav-link" href="#">Topic 3</a>
+	          </li>
+	        </ul>
+        </div>
+        <div class = "row col-12 container" id = "wbdv-widget-container">
+        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        		<div class="row col-lg-12 wbdv-widget-first-row">
+        			<div class="col-lg-6 wbdv-widget-title">
+        				<h3>Heading Widget</h3>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-up" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-down" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-3 wbdv-widget-select-widget-type">
+        				<select class="custom-select custom-select-lg mb-3">
+						  <option selected>Heading</option>
+						  <option value="1">Paragraph</option>
+						  <option value="2">List</option>
+						  <option value="3">Image</option>
+						</select>
+        			</div>
+        			<div class="col-lg-1">
+        				<ion-icon name="close-circle-outline" size="large" class=wbdv-widget-delete-icon></ion-icon>
+        			</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-heading">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="Heading text">
+					</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-select-size">
+        			<div class="col-12">
+        				<select class="custom-select custom-select-lg mb-3">
+						  <option selected>Choose size</option>
+						  <option value="1">Heading 1</option>
+						  <option value="2">Heading 2</option>
+						  <option value="3">Heading 3</option>
+						</select>
+        			</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-name">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="Widget name">
+					</div>
+        		</div>
+        		<div class="row col-lg-12">
+        			<h3>Preview</h3>
+        		</div>
+        		<div class="row col-lg-12">
+        			<h2>Heading Text</h3>
+        		</div>
+        	</div>
+        	
+        	<div class = "row col-10 container wbdv-paragraph-widget centered wbdv-widget">
+        		<div class="row col-lg-12 wbdv-widget-first-row">
+        			<div class="col-lg-6 wbdv-widget-title">
+        				<h3>Paragraph Widget</h3>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-up" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-down" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-3 wbdv-widget-select-widget-type">
+        				<select class="custom-select custom-select-lg mb-3">
+						  <option selected>Heading</option>
+						  <option value="1">Paragraph</option>
+						  <option value="2">List</option>
+						  <option value="3">Image</option>
+						</select>
+        			</div>
+        			<div class="col-lg-1">
+        				<ion-icon name="close-circle-outline" size="large" class=wbdv-widget-delete-icon></ion-icon>
+        			</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-heading">
+        			<div class="form-group col-12">
+					  <textarea class="form-control" placeholder="Lorem ipsum">
+					  </textarea>
+					</div>
+        		</div>
+        		
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-name">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="Widget name">
+					</div>
+        		</div>
+        		<div class="row col-lg-12">
+        			<h3>Preview</h3>
+        		</div>
+        		<div class="row col-lg-12">
+        			<p>Lorem ipsum</p>
+        		</div>
+        	</div>
+        	
+        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        		<div class="row col-lg-12 wbdv-widget-first-row">
+        			<div class="col-lg-6 wbdv-widget-title">
+        				<h3>List Widget</h3>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-up" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-down" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-3 wbdv-widget-select-widget-type">
+        				<select class="custom-select custom-select-lg mb-3">
+						  <option selected>Heading</option>
+						  <option value="1">Paragraph</option>
+						  <option value="2">List</option>
+						  <option value="3">Image</option>
+						</select>
+        			</div>
+        			<div class="col-lg-1">
+        				<ion-icon name="close-circle-outline" size="large" class=wbdv-widget-delete-icon></ion-icon>
+        			</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-heading">
+        			<div class="form-group col-12">
+					  <textarea type="text" class="form-control" placeholder="Enter each list item on a separate row">
+			
+					  </textarea>
+					</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-select-size">
+        			<div class="col-12">
+        				<select class="custom-select custom-select-lg mb-3">
+						  <option selected>Unordered list</option>
+						  <option value="1">Ordered list</option>
+						</select>
+        			</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-name">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="Widget name">
+					</div>
+        		</div>
+        		<div class="row col-lg-12">
+        			<h3>Preview</h3>
+        		</div>
+        		<div class="row col-lg-12">
+        			<ul>
+        				<li>Put each</li>
+        				<li>list item</li>
+        				<li>in a separate</li>
+        				<li>row</li>
+					</ul>
+        		</div>
+        	</div>
+        	
+        		<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        		<div class="row col-lg-12 wbdv-widget-first-row">
+        			<div class="col-lg-6 wbdv-widget-title">
+        				<h3>Image Widget</h3>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-up" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-down" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-3 wbdv-widget-select-widget-type">
+        				<select class="custom-select custom-select-lg mb-3">
+						  <option selected>Heading</option>
+						  <option value="1">Paragraph</option>
+						  <option value="2">List</option>
+						  <option value="3">Image</option>
+						</select>
+        			</div>
+        			<div class="col-lg-1">
+        				<ion-icon name="close-circle-outline" size="large" class=wbdv-widget-delete-icon></ion-icon>
+        			</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-heading">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817.jpg">
+					</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-name">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="Widget name">
+					</div>
+        		</div>
+        		<div class="row col-lg-12">
+        			<h3>Preview</h3>
+        		</div>
+        		<div class="row col-lg-12">
+        			<img src='https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817.jpg' class="wbdv-image-widget-image responsive">
+        		</div>
+        	</div>
+        	
+        	<div class = "row col-10 container wbdv-heading-widget centered wbdv-widget">
+        		<div class="row col-lg-12 wbdv-widget-first-row">
+        			<div class="col-lg-6 wbdv-widget-title">
+        				<h3>Link Widget</h3>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-up" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-1 ">
+        				<ion-icon name="arrow-round-down" size="large" class=wbdv-widget-move-icon></ion-icon>
+        			</div>
+        			<div class="col-lg-3 wbdv-widget-select-widget-type">
+        				<select class="custom-select custom-select-lg mb-3">
+						  <option selected>Heading</option>
+						  <option value="1">Paragraph</option>
+						  <option value="2">List</option>
+						  <option value="3">Image</option>
+						</select>
+        			</div>
+        			<div class="col-lg-1">
+        				<ion-icon name="close-circle-outline" size="large" class=wbdv-widget-delete-icon></ion-icon>
+        			</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-heading">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="https//reddit.com">
+					</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-heading">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="Link text">
+					</div>
+        		</div>
+        		<div class="row col-lg-12 wbdv-heading-widget-enter-name">
+        			<div class="form-group col-12">
+					  <input type="text" class="form-control" placeholder="Widget name">
+					</div>
+        		</div>
+        		<div class="row col-lg-12">
+        			<h3>Preview</h3>
+        		</div>
+        		<div class="row col-lg-12">
+        			<a href="http://reddit.com">Link Text</a>
+        		</div>
+        	</div>
+        	
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
