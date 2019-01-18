@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>User Admin</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="user-admin.style.client.css">
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="../services/user.service.client.js"></script>
+<script src="user-admin.component.client.js"></script>
+<script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+</script>
+</head>
+<body>
+  <div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th><input id="usernameFld" class="form-control" placeholder="username" /></th>
+        <th><input class="form-control" placeholder="password" /></th>
+        <th><input id="firstNameFld" class="form-control" placeholder="first name" /></th>
+        <th><input class="form-control" placeholder="last name" /></th>
+        <th><select class="form-control"><option>Faculty</option>
+            <option>Student</option>
+            <option>Admin</option></select></th>
+        <th><button class="btn btn-primary btn-small">Update</button></th>
+        <th><button class="btn btn-success btn-small">Create</button></th>
+      </tr>
+      <tr class="wbdv-template">
+        <td class="username">tlee</td>
+        <td>*pw*</td>
+        <td class="firstName"></td>
+        <td class="lastName"></td>
+        <td>Faculty</td>
+        <td class="wbdv-update-button"><ion-icon name="create" size="large"  data-toggle="tooltip" title="Edit"></ion-icon></td>
+        <td class="wbdv-delete-button"><ion-icon name="close-circle-outline" size="large" data-toggle="tooltip" title="Delete"></ion-icon></td>          
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  </div>
+</body>
+</html>
