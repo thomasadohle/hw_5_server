@@ -6,7 +6,7 @@
 
 <script
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
 <script src="../services/user.service.client.js"></script>
 <script src="user-admin.component.client.js"></script>
 <script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
@@ -30,18 +30,18 @@
       </tr>
       <tr>
         <th><input id="usernameFld" class="form-control" placeholder="username" /></th>
-        <th><input class="form-control" placeholder="password" /></th>
+        <th><input id="passwordFld" class="form-control" placeholder="password" /></th>
         <th><input id="firstNameFld" class="form-control" placeholder="first name" /></th>
-        <th><input class="form-control" placeholder="last name" /></th>
-        <th><select class="form-control"><option>Faculty</option>
+        <th><input id="lastNameFld" class="form-control" placeholder="last name" /></th>
+        <th><select id="roleFld" class="form-control"><option>Faculty</option>
             <option>Student</option>
             <option>Admin</option></select></th>
-        <th><button class="btn btn-primary btn-small">Update</button></th>
-        <th><button class="btn btn-success btn-small">Create</button></th>
+        <th><button id="updateBtn" class="btn btn-primary btn-small">Update</button></th>
+        <th><button id="createBtn" class="btn btn-success btn-small">Create</button></th>
       </tr>
       <tr class="wbdv-template">
-        <td class="username">tlee</td>
-        <td>*pw*</td>
+        <td class="username"></td>
+        <td class = "password"></td>
         <td class="firstName"></td>
         <td class="lastName"></td>
         <td>Faculty</td>
