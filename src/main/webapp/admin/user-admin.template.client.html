@@ -9,6 +9,8 @@
 <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
 <script src="../services/user.service.client.js"></script>
 <script src="user-admin.component.client.js"></script>
+<script src="../models/user.model.client.js"></script>
+
 <script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
 
 
@@ -17,6 +19,7 @@
 </head>
 <body>
   <div class="container-fluid">
+   
   <table class="table">
     <thead>
       <tr>
@@ -28,23 +31,30 @@
         <th></th>
         <th></th>
       </tr>
-      <tr>
-        <th><input id="usernameFld" class="form-control" placeholder="username" /></th>
-        <th><input id="passwordFld" class="form-control" placeholder="password" /></th>
-        <th><input id="firstNameFld" class="form-control" placeholder="first name" /></th>
-        <th><input id="lastNameFld" class="form-control" placeholder="last name" /></th>
-        <th><select id="roleFld" class="form-control"><option>Faculty</option>
-            <option>Student</option>
-            <option>Admin</option></select></th>
-        <th><button id="updateBtn" class="btn btn-primary btn-small">Update</button></th>
-        <th><button id="createBtn" class="btn btn-success btn-small">Create</button></th>
-      </tr>
-      <tr class="wbdv-template">
+      
+	      <tr>
+	     
+	      
+	        <th><input id="usernameFld" class="form-control" placeholder="username" name = "username"/></th>
+	        <th><input id="passwordFld" class="form-control" placeholder="password" name = "password"/></th>
+	        <th><input id="firstNameFld" class="form-control" placeholder="first name" name="firstName" /></th>
+	        <th><input id="lastNameFld" class="form-control" placeholder="last name" name = "lastName"/></th>
+	        <th><select id="roleFld" class="form-control"><option>Faculty</option>
+	            <option>Student</option>
+	            <option>Admin</option></select></th>
+            <th><ion-icon name="search" size="large" id="wbdv-search-button"></ion-icon></th>
+	        <th><button id="updateBtn" class="btn btn-primary btn-small">Update</button></th>
+	        <th><button id="createBtn" class="btn btn-success btn-small">Create</button></th>
+        	
+	      </tr>
+      
+      <tr class="wbdv-template" >
         <td class="username"></td>
         <td class = "password"></td>
         <td class="firstName"></td>
         <td class="lastName"></td>
         <td>Faculty</td>
+        <td></td>
         <td class="wbdv-update-button"><ion-icon name="create" size="large"  data-toggle="tooltip" title="Edit"></ion-icon></td>
         <td class="wbdv-delete-button"><ion-icon name="close-circle-outline" size="large" data-toggle="tooltip" title="Delete"></ion-icon></td>          
       </tr>
@@ -52,6 +62,7 @@
     <tbody>
     </tbody>
   </table>
+ 
   </div>
 </body>
 </html>

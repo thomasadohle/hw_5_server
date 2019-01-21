@@ -8,8 +8,8 @@ function User(username, password, firstName, lastName) {
   this.getUsername = getUsername;
   this.setPassword = setPassword;
   this.getPassword = getPassword;
-  this.setFirstName = setFirstname;
-  this.getFirstName = getFirstname;
+  this.setFirstName = setFirstName;
+  this.getFirstName = getFirstName;
   this.setLastName = setLastName;
   this.getLastName = getLastName;
   
