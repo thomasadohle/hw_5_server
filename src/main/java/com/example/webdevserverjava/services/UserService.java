@@ -67,9 +67,19 @@ public class UserService {
 		return newUser;
 		
 	} 
-//	public void deleteUser(Integer id) {
-//		
-//	}
+	@RequestMapping(value="/deleteUser/{id}", method=RequestMethod.POST)
+	public void deleteUser(@PathVariable(value="id") int id) {
+		int i = 0;
+		for (User u : users) {
+			if (u.getId() == id) {
+				users.remove(i);
+				System.out.println(users);
+				return;
+			}
+			i++;
+		}
+		System.out.println("User was not found");
+	}
 //	public User updateUser(Integer id, User user) {
 //		
 //	}

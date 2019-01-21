@@ -21,7 +21,7 @@
         userService
             .findAllUsers()
             .then(renderUsers);
-        $("#wbdv-row-template").hide();
+
         //Event handlers
   	  $(document).on("click", ".wbdv-delete-button", function() {
   		  console.log("clicked");
@@ -36,6 +36,7 @@
   		 var newUser = createUser(username, password, firstName, lastName);
   		 console.log("new users username is: " + username);
   	  });
+  	  
 
         
        
@@ -62,6 +63,7 @@
     	console.log(deleteText)
     	var userToDelete = $(deleteText);
     	console.log(userToDelete);
+    	userService.deleteUser(userId);
     	userToDelete.remove();
     }
     function selectUser() {  }

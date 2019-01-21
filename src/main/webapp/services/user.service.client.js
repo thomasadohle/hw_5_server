@@ -28,5 +28,9 @@ function AdminUserServiceClient() {
     function updateUser(userId, user, callback) {
     	console.log("updateUser");
     }
-    function deleteUser(userId, callback) { }
+    function deleteUser(userId) { 
+    	url = "http://localhost:8080/deleteUser/" + userId;
+    	console.log(url);
+    	$.post(url);
+    }
 }
