@@ -18,9 +18,9 @@ import com.example.webdevserverjava.model.User;
 public class UserService {
 
 	List<User> users = new ArrayList<User>();
-	User alice = new User(123, "alice", "pw", "Alice", "Wonderland");
-	User bob   = new User(234, "bob", "pw", "Bob", "Marley");
-	User steve = new User(456, "steve", "pw", "Steve", "Smith");
+	User alice = new User(123, "alice", "pw", "Alice", "Wonderland", "Faculty");
+	User bob   = new User(234, "bob", "pw", "Bob", "Marley", "Student");
+	User steve = new User(456, "steve", "pw", "Steve", "Smith", "Admin");
 	Boolean initialized = false;
 	List<Integer> idList = new ArrayList<Integer>();
 	
@@ -40,33 +40,49 @@ public class UserService {
 			initialize();
 			this.initialized = true;
 		}
-		
+		System.out.println("From the getALlUsers API call");
+		printUserData();
 		return users;
 	}
 	@GetMapping("/api/user/{userId}")
 	public User findUserById(
 			@PathVariable("userId") Integer id) {
 		for(User user: users) {
-			if(id == user.getId().intValue())
+			if(id == user.getId().intValue()) {
 				System.out.println("got it from the findUserById method " + user.getFirstName());
 				return user;
 		}
+			System.out.println("From Update API call");
+			printUserData();
+		}
+		System.out.println("Could not find user");
 		return null;
 	}
 	
-	@RequestMapping(value="/createUser/{username}/{password}/{firstName}/{lastName}", method=RequestMethod.POST)
+	
+	@RequestMapping(value="/createUser/{username}/{password}/{firstName}/{lastName}/{role}", method=RequestMethod.POST)
 	public User createUser(@PathVariable(value="username") String userName,
 			@PathVariable("firstName") String firstName,
 			@PathVariable("lastName") String lastName,
-			@PathVariable("password") String password) {
+			@PathVariable("password") String password,
+			@PathVariable("role") String role) {
 		int id = generateID();
-		User newUser = new User (id, userName, password, firstName, lastName);
+		User newUser = new User (id, userName, password, firstName, lastName, role);
 		System.out.println(newUser.getFirstName());
 		users.add(newUser);
 		System.out.println("There are now" + users.size() +" users");
 		return newUser;
 		
 	} 
+	
+	@GetMapping("/api/recent")
+	public User returnMostRecentUser () {
+		User recent = users.get(users.size()-1);
+		System.out.println("From the recent user API call");
+		printUserData();
+		return recent;
+	}
+	
 	@RequestMapping(value="/deleteUser/{id}", method=RequestMethod.POST)
 	public void deleteUser(@PathVariable(value="id") int id) {
 		int i = 0;
@@ -80,9 +96,39 @@ public class UserService {
 		}
 		System.out.println("User was not found");
 	}
-//	public User updateUser(Integer id, User user) {
-//		
-//	}
+	@RequestMapping(value="/updateUser/{username}/{password}/{firstName}/{lastName}/{userId}/{role}", method=RequestMethod.POST)
+	public void createReplacementUser(@PathVariable(value="username") String userName,
+			@PathVariable("firstName") String firstName,
+			@PathVariable("lastName") String lastName,
+			@PathVariable("password") String password,
+			@PathVariable("userId") Integer userId,
+			@PathVariable("role") String role) {
+		User updatedUser = new User(userId,userName,password,firstName,lastName, role);
+		System.out.println("The usernmae of the updated user is: " + updatedUser.getUsername());
+		updateUser(userId, updatedUser);
+	}
+	
+	public void updateUser(Integer id, User updatedUser) {
+		System.out.println("The id of the user to be updated is: " + id);
+		for (User u : users) {
+			if (u.getId().intValue() == id.intValue()) {
+				u.setUsername(updatedUser.getUsername());
+				u.setPassword(updatedUser.getPassword());
+				u.setFirstName(updatedUser.getFirstName());
+				u.setLastName(updatedUser.getLastName());
+				u.setRole(updatedUser.getRole());
+				System.out.println("User updated successfully");
+				for (User us : users) {
+					System.out.println(us.getUsername());
+				}
+				return;
+			}
+		}
+		System.out.println("Unable to find the user to update");
+		
+		}
+	
+	
 	public int generateID () {
 		Boolean numberGenerated = false;
 		int attempt = 0;
@@ -98,8 +144,22 @@ public class UserService {
 	}
 	
 	public static void main (String [] args) {
-		UserService test = new UserService();
-		test.findUserById(123);
+
+	}
+	
+	public void printUserData() {
+		int i=0;
+		for (User u : users) {
+			System.out.println("User "+i);
+			System.out.println("ID: " + u.getId());
+			System.out.println("Username0: " + u.getUsername());
+			System.out.println("First Name: " + u.getFirstName());
+			System.out.println("Last Name: " + u.getLastName());
+			System.out.println("Password: " + u.getPassword());
+			System.out.println("Role: " + u.getRole());
+			System.out.println("");
+			i++;
+		}
 	}
 }
 
