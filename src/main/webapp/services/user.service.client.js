@@ -1,3 +1,6 @@
+//Transitioning between local development and Heroku deployment, for some reason this.baseUrl is not interpreted inside the getMostRecentUser function.
+// Had to hard cord the URL
+
 function AdminUserServiceClient() {
     this.createUser = createUser;
     this.findAllUsers = findAllUsers;
@@ -6,23 +9,24 @@ function AdminUserServiceClient() {
     this.updateUser = updateUser;
     this.getMostRecentUser = getMostRecentUser;
     this.search = search;
-    this.url = 'http://localhost:8080/api/user';
+    this.baseUrl = 'https://salty-falls-99802.herokuapp.com/';
     var self = this;
     function createUser(username, password, firstName, lastName, role) { 
-    	url = "http://localhost:8080/createUser/" + username +"/" + password + "/" + firstName + "/" + lastName + "/" + role;
+    	var url = this.baseUrl + "/createUser/" + username +"/" + password + "/" + firstName + "/" + lastName + "/" + role;
         return $.post(url).then(function(){
         	getMostRecentUser();
         });
     }
     function findAllUsers() {
-        return fetch('http://localhost:8080/api/user')
+    	var url = this.baseUrl + "/api/user";
+        return fetch(url)
             .then(function(response) {
                 return response.json();
             });
     }
-    function findUserById(userId) { 
-    	console.log("The id sent to user.service.client.findUserById is: " + userId);
-    	return fetch("http://localhost:8080/api/user/" + userId)
+    function findUserById(userId) {
+    	var url = this.baseUrl + "/api/user/" + userId;
+    	return fetch(url)
     		.then(function(response){
     			var jsonResponse = response.json();
     			console.log(jsonResponse);
@@ -30,10 +34,13 @@ function AdminUserServiceClient() {
     	});
     }
     function getMostRecentUser(){
-    	return fetch("http://localhost:8080/api/recent/")
+    	var url = "https://salty-falls-99802.herokuapp.com/api/recent/";
+    	var urlAgain = this.baseUrl + "/api/recent/";
+    	console.log(this.baseUrl);
+    	console.log(url);
+    	return fetch(url)
 		.then(function(response){
 			var jsonResponse = response.json();
-			console.log("response from getMostRecentUser:" + jsonResponse);
 			return jsonResponse;
     });
     }
@@ -44,13 +51,11 @@ function AdminUserServiceClient() {
     	var firstName = user.firstName;
     	var lastName = user.lastName;
     	var role = user.role;
-    	var url = "http://localhost:8080/updateUser/"+username+"/"+password+"/"+firstName+"/"+lastName+"/"+id + "/" + role;
-    	console.log(url);
+    	var url = this.baseUrl + "/updateUser/"+username+"/"+password+"/"+firstName+"/"+lastName+"/"+id + "/" + role;
     	$.post(url);
     }
     function deleteUser(userId) { 
-    	var url = "http://localhost:8080/deleteUser/" + userId;
-    	console.log(url);
+    	var url = this.baseUrl + "/deleteUser/" + userId;
     	$.post(url);
     }
    
@@ -60,7 +65,7 @@ function AdminUserServiceClient() {
     	if (password == ""){password="banana_Pancakes";}
     	if (firstName == ""){firstName="banana_Pancakes";}
     	if (lastName == ""){lastName="banana_Pancakes";}
-    	var url = "http://localhost:8080/api/search/"+username +"/"+password + "/" + firstName + "/" +lastName+"/" + role;
+    	var url = this.baseUrl + "/api/search/"+username +"/"+password + "/" + firstName + "/" +lastName+"/" + role;
     	return fetch(url)
 		.then(function(response){
 			var jsonResponse = response.json();
@@ -68,19 +73,7 @@ function AdminUserServiceClient() {
 			return jsonResponse;
     }); 
    
-    /*
-    function search(username, password, firstName, lastName, role){
-    	var users = findAllUsers();
-    	console.log(users);
-    	var searchResults = [];
-    	for(var u=0; u<users.length; u++) {
-    		if(users[u].username.contains(userName) && users[u].password().contains(password)
-					&& users[u].firstName().contains(firstName) && users[u].lastName().contains(lastName) 
-					&& users[u].role().contains(role)){
-    			searchResults.push(users[u]);
-    		}
-		return searchResults;
-    	}}; */
+   
     
 }
 }

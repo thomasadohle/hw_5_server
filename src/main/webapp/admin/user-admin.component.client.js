@@ -62,6 +62,13 @@
   		 var role = $("#roleFld :selected").text();
   		 search(username, password, firstName, lastName,role);
   	});
+  	$(document).on("click", "#refreshBtn", function(){
+ 		$("td").remove();
+ 		userService
+        .findAllUsers()
+        .then(renderUsers);
+
+ 	});
   	      
   	function search(username, password, firstName, lastName, role){
   		
