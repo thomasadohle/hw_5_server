@@ -2,14 +2,11 @@ package com.example.webdevserverjava.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Random;
 
@@ -22,9 +19,16 @@ public class UserService {
 	User alice = new User(123, "alice", "pw", "Alice", "Wonderland", "Faculty");
 	User bob   = new User(234, "bob", "pw", "Bob", "Marley", "Student");
 	User steve = new User(456, "steve", "pw", "Steve", "Smith", "Admin");
+	
+	//If !initialized, findAllUser() calls intialize() method to populate the application with "dummy" users
 	Boolean initialized = false;
+	
+	//Keeps track of all existing user IDs to ensure that new users get unique Ids
 	List<Integer> idList = new ArrayList<Integer>();
 	
+	/**
+	 * Populates the users 
+	 */
 	public void initialize () {
 		users.add(alice);
 		users.add(bob);
@@ -34,17 +38,26 @@ public class UserService {
 		idList.add(456);
 	}
 	
-;	
+
+	/**
+	 * Handless GET request to return all User
+	 * @return JSON containing all users stored on the server
+	 */
 	@GetMapping("/api/user")
 	public List<User> findAllUser() {
 		if (! this.initialized) {
 			initialize();
 			this.initialized = true;
 		}
-		System.out.println("From the getALlUsers API call");
-		printUserData();
+		printUserData(); //used for testing
 		return users;
 	}
+	
+	/**
+	 * Handles GET request to return a specific user
+	 * @param id is the unique userId
+	 * @return the user with the given ID
+	 */
 	@GetMapping("/api/user/{userId}")
 	public User findUserById(
 			@PathVariable("userId") Integer id) {
@@ -53,14 +66,19 @@ public class UserService {
 				System.out.println("got it from the findUserById method " + user.getFirstName());
 				return user;
 		}
-			System.out.println("From Update API call");
-			printUserData();
 		}
-		System.out.println("Could not find user");
 		return null;
 	}
 	
-	
+	/**
+	 * Handles POST request to generate a new User object on the server.
+	 * @param userName
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @param role
+	 * @return newly created User
+	 */
 	@RequestMapping(value="/createUser/{username}/{password}/{firstName}/{lastName}/{role}", method=RequestMethod.POST)
 	public User createUser(@PathVariable(value="username") String userName,
 			@PathVariable("firstName") String firstName,
@@ -73,9 +91,12 @@ public class UserService {
 		users.add(newUser);
 		System.out.println("There are now" + users.size() +" users");
 		return newUser;
-		
 	} 
 	
+	/**
+	 * Returns the User most recently added to the server
+	 * @return most recently added user
+	 */
 	@GetMapping("/api/recent")
 	public User returnMostRecentUser () {
 		User recent = users.get(users.size()-1);
@@ -84,6 +105,10 @@ public class UserService {
 		return recent;
 	}
 	
+	/**
+	 * Handles POST request to delete a User from the server
+	 * @param id
+	 */
 	@RequestMapping(value="/deleteUser/{id}", method=RequestMethod.POST)
 	public void deleteUser(@PathVariable(value="id") int id) {
 		int i = 0;
@@ -97,6 +122,16 @@ public class UserService {
 		}
 		System.out.println("User was not found");
 	}
+	
+	/**
+	 * Handles POST request to update User information. The method name does not match it's function, but I'm scared to change it right now.
+	 * @param userName
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @param userId
+	 * @param role
+	 */
 	@RequestMapping(value="/updateUser/{username}/{password}/{firstName}/{lastName}/{userId}/{role}", method=RequestMethod.POST)
 	public void createReplacementUser(@PathVariable(value="username") String userName,
 			@PathVariable("firstName") String firstName,
@@ -108,7 +143,16 @@ public class UserService {
 		System.out.println("The usernmae of the updated user is: " + updatedUser.getUsername());
 		updateUser(userId, updatedUser);
 	}
-	// http://localhost:8080/api/search/alice/p/banana_Pancakes/banana_Pancakes/Faculty
+	
+	/**
+	 * Filters User based on search parameters. If the parameter is "banana_Pancakes, then it is ignored
+	 * @param userName
+	 * @param password
+	 * @param firstName
+	 * @param lastName
+	 * @param role
+	 * @return a List of User matching search paramters
+	 */
 	@GetMapping("/api/search/{username}/{password}/{firstName}/{lastName}/{role}")
 	public List<User> searchForUsers(@PathVariable(value="username") String userName,
 			@PathVariable(value="password")  String password,	
@@ -141,6 +185,11 @@ public class UserService {
 		
 	}
 	
+	/**
+	 * Actually handles the updating of the user
+	 * @param id is the userId of the original user
+	 * @param updatedUser is a temporary User to compare to the old one
+	 */
 	public void updateUser(Integer id, User updatedUser) {
 		System.out.println("The id of the user to be updated is: " + id);
 		for (User u : users) {
@@ -161,7 +210,10 @@ public class UserService {
 		
 		}
 	
-	
+	/**
+	 * Ensures that all User have unique Id
+	 * @return
+	 */
 	public int generateID () {
 		Boolean numberGenerated = false;
 		int attempt = 0;
@@ -176,10 +228,10 @@ public class UserService {
 		return attempt;
 	}
 	
-	public static void main (String [] args) {
 
-	}
-	
+	/**
+	 * Used for testing
+	 */
 	public void printUserData() {
 		int i=0;
 		for (User u : users) {
