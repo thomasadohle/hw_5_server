@@ -13,7 +13,7 @@
         $passwordFld = $("#passwordFld");
         $firstNameFld = $("#firstNameFld");
         $lastNameFld = $("#lastNameFld");
-        $roleFld = $("#rowFld");
+        $roleFld = $("#roleFld");
         $userRowTemplate = $(".wbdv-template");
         $tbody = $("tbody");
         $usernameFld.val("alice");
@@ -32,8 +32,9 @@
   		 var password = $("#passwordFld").val();
   		 var firstName = $("#firstNameFld").val();
   		 var lastName = $("#lastNameFld").val();
-  		 var newUser = createUser(username, password, firstName, lastName);
-  		 console.log("new users username is: " + username);
+  		 var role = $("#roleFld :selected").text();
+  		 console.log("role: " + username);
+  		 createUser(username, password,firstName,lastName,role);
   	  });
   	$(document).on("click", ".wbdv-update-button", function() {
 		  var rowId = getUserIdFromButton($(this));
@@ -53,17 +54,32 @@
   		 var role = $("#roleFld").val();
   		 updateUser(userId, username, password, firstName, lastName,role);
   	});
+  	$(document).on("click", "#wbdv-search-button", function(){
+  		 var username = $("#usernameFld").val();
+  		 var password = $("#passwordFld").val();
+  		 var firstName = $("#firstNameFld").val();
+  		 var lastName = $("#lastNameFld").val();
+  		 var role = $("#roleFld :selected").text();
+  		 search(username, password, firstName, lastName,role);
+  	});
   	      
+  	function search(username, password, firstName, lastName, role){
+  		
+  		return userService.search(username, password, firstName, lastName, role).then(function(response){
+  		$(".wbdv-template").remove();
+  		renderUsers(response);
+  		});
+  	}
        
-    }
+    
     function getUserIdFromButton(button){
     	var rowId = button.closest('tr').attr('id');
     	console.log("ID for row is: " + rowId);
     	return rowId;
     }
-    function createUser(username, password, firstName, lastName) {
-    	var newUser = new User (username, password, firstName, lastName);
-    	userService.createUser(username, password, firstName, lastName);
+    function createUser(username, password, firstName, lastName, role) {
+    	var newUser = new User (username, password, firstName, lastName, role);
+    	userService.createUser(username, password, firstName, lastName, role);
     	
     	return userService.getMostRecentUser().then(function(response)
     	{
@@ -78,8 +94,7 @@
     	return userService.findUserById(userId);
     }
     function deleteUser(userId) {
-    	var deleteText = '#'.concat(userId)
-    	console.log(deleteText)
+    	var deleteText = '#'.concat(userId);
     	var userToDelete = $(deleteText);
     	console.log(userToDelete);
     	userService.deleteUser(userId);
@@ -109,6 +124,7 @@
     function renderUser(user) { 
     	console.log(user);
         var clone = $userRowTemplate.clone();
+        clone.attr("data-child-tag","child-tag");
         clone.find(".username").html(user.username);
         clone.find(".password").html(user.password);
         clone.find(".firstName").html(user.firstName);
@@ -130,9 +146,10 @@
             clone.find(".lastName").html(users[u].lastName);
             clone.find(".role").html(users[u].role)
             clone.attr("id",users[u].id);
-            console.log(clone.id);
+            clone.attr("data-child-tag","child-tag");
             $tbody.append(clone);
         }
+    }
     }
 })();
 

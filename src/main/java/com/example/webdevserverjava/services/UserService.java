@@ -2,6 +2,7 @@ package com.example.webdevserverjava.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -106,6 +107,38 @@ public class UserService {
 		User updatedUser = new User(userId,userName,password,firstName,lastName, role);
 		System.out.println("The usernmae of the updated user is: " + updatedUser.getUsername());
 		updateUser(userId, updatedUser);
+	}
+	// http://localhost:8080/api/search/alice/p/banana_Pancakes/banana_Pancakes/Faculty
+	@GetMapping("/api/search/{username}/{password}/{firstName}/{lastName}/{role}")
+	public List<User> searchForUsers(@PathVariable(value="username") String userName,
+			@PathVariable(value="password")  String password,	
+			@PathVariable("firstName") String firstName,
+			@PathVariable("lastName") String lastName,
+			@PathVariable("role") String role) {
+		System.out.println("Password is: " + password);
+		List<User> searchResults = new ArrayList<User>();
+		String defaultValueForBlank = "banana_Pancakes";
+		for (User u : users) {
+			if((u.getUsername().toLowerCase().contains(userName.toLowerCase()) || userName.equals(defaultValueForBlank)) 
+					&& (u.getPassword().toLowerCase().contains(password.toLowerCase()) || password.equals(defaultValueForBlank))
+					&& (u.getFirstName().toLowerCase().contains(firstName.toLowerCase()) || firstName.equals(defaultValueForBlank)) 
+					&& (u.getLastName().toLowerCase().contains(lastName.toLowerCase()) || lastName.equals(defaultValueForBlank))
+					&& (u.getRole().toLowerCase().contains(role.toLowerCase()) || role.equals(defaultValueForBlank))) {
+				searchResults.add(u);
+			} 
+		}
+		System.out.println("Search results for:");
+		System.out.println("username: " + userName);
+		System.out.println("password: " + password);
+		System.out.println("first name: " + firstName);
+		System.out.println("last name: " + lastName);
+		System.out.println("role: " + role);
+		for (User user : searchResults) {
+			System.out.println(user.getUsername());
+		} 
+		System.out.println("There are " + searchResults.size() + " results");
+		return searchResults;
+		
 	}
 	
 	public void updateUser(Integer id, User updatedUser) {
