@@ -26,6 +26,7 @@ public class UserService {
 	List<Integer> idList = new ArrayList<Integer>();
 	
 	@PostMapping("/api/register")
+	@CrossOrigin
 	public User register (@RequestBody User user,
 			HttpSession session) {
 		session.setAttribute("currentUser", user);
@@ -41,6 +42,7 @@ public class UserService {
 	 * @return JSON containing all users stored on the server
 	 */
 	@GetMapping("/api/user")
+	@CrossOrigin
 	public List<User> findAllUser() {
 		printUserData(); //used for testing
 		System.out.println("API WAS CALLED");
@@ -48,6 +50,7 @@ public class UserService {
 	}
 	
 	@GetMapping("/test")
+	@CrossOrigin
 	public User returnTestUser() {
 		User newUser = new User ("testUn","testFN","testLN","testPW","FACULTY");
 		return newUser;
