@@ -3,6 +3,7 @@ package com.example.webdevserverjava.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +43,14 @@ public class UserService {
 	@GetMapping("/api/user")
 	public List<User> findAllUser() {
 		printUserData(); //used for testing
+		System.out.println("API WAS CALLED");
 		return users;
+	}
+	
+	@GetMapping("/test")
+	public User returnTestUser() {
+		User newUser = new User ("testUn","testFN","testLN","testPW","FACULTY");
+		return newUser;
 	}
 	
 	/**
