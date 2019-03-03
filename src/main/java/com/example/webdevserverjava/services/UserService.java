@@ -25,17 +25,60 @@ public class UserService {
 	//Keeps track of all existing user IDs to ensure that new users get unique Ids
 	List<Integer> idList = new ArrayList<Integer>();
 	
+	/**
+	 * Register a new user
+	 * @param user
+	 * @param session
+	 * @return
+	 */
 	@PostMapping("/api/register")
 	@CrossOrigin
 	public User register (@RequestBody User user,
 			HttpSession session) {
 		session.setAttribute("currentUser", user);
-		System.out.println("made it to the API");
+		int id = generateID();
+		user.setId(id);
 		users.add(user);
 		printUserData();
 		return user;
 	}
 	
+	@PostMapping("/api/login")
+	@CrossOrigin
+	public User login(	@RequestBody User credentials,
+	HttpSession session) {
+	 for (User user : users) {
+	  if( user.getUsername().equals(credentials.getUsername())
+	   && user.getPassword().equals(credentials.getPassword())) {
+	    session.setAttribute("currentUser", user);
+	    System.out.println("Successfully logged in user " + credentials.getUsername());
+	    return user;
+	  }
+	 }
+	 return null;
+	}
+
+	
+	
+	/**
+	 * Return the currently logged in user
+	 * @param session
+	 * @return
+	 */
+	@GetMapping("/api/profile")
+	@CrossOrigin
+	public User profile(HttpSession session) {
+		User currentUser = (User)session.getAttribute("currentUser");
+		System.out.println("Current user is: " + currentUser.getUsername());
+		return currentUser;
+	}
+	
+	@PostMapping("/api/logout")
+	@CrossOrigin
+	public void logout (HttpSession session) {
+		System.out.println("User logged out");
+		session.invalidate();
+	}
 
 	/**
 	 * Handless GET request to return all User
@@ -45,7 +88,6 @@ public class UserService {
 	@CrossOrigin
 	public List<User> findAllUser() {
 		printUserData(); //used for testing
-		System.out.println("API WAS CALLED");
 		return users;
 	}
 	
@@ -73,28 +115,7 @@ public class UserService {
 		return null;
 	}
 	
-	/**
-	 * Handles POST request to generate a new User object on the server.
-	 * @param userName
-	 * @param firstName
-	 * @param lastName
-	 * @param password
-	 * @param role
-	 * @return newly created User
-	 */
-	@RequestMapping(value="/createUser/{username}/{password}/{firstName}/{lastName}/{role}", method=RequestMethod.POST)
-	public User createUser(@PathVariable(value="username") String userName,
-			@PathVariable("firstName") String firstName,
-			@PathVariable("lastName") String lastName,
-			@PathVariable("password") String password,
-			@PathVariable("role") String role) {
-		int id = generateID();
-		User newUser = new User (id, userName, password, firstName, lastName, role);
-		System.out.println(newUser.getFirstName());
-		users.add(newUser);
-		System.out.println("There are now" + users.size() +" users");
-		return newUser;
-	} 
+
 	
 	/**
 	 * Returns the User most recently added to the server
