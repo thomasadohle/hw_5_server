@@ -5,10 +5,14 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Random;
+
+import javax.servlet.http.HttpSession;
 
 import com.example.webdevserverjava.model.User;
 
@@ -16,26 +20,18 @@ import com.example.webdevserverjava.model.User;
 public class UserService {
 
 	List<User> users = new ArrayList<User>();
-	User alice = new User(123, "alice", "pw", "Alice", "Wonderland", "Faculty");
-	User bob   = new User(234, "bob", "pw", "Bob", "Marley", "Student");
-	User steve = new User(456, "steve", "pw", "Steve", "Smith", "Admin");
-	
-	//If !initialized, findAllUser() calls intialize() method to populate the application with "dummy" users
-	Boolean initialized = false;
 	
 	//Keeps track of all existing user IDs to ensure that new users get unique Ids
 	List<Integer> idList = new ArrayList<Integer>();
 	
-	/**
-	 * Populates the users 
-	 */
-	public void initialize () {
-		users.add(alice);
-		users.add(bob);
-		users.add(steve);
-		idList.add(123);
-		idList.add(234);
-		idList.add(456);
+	@PostMapping("/api/register")
+	public User register (@RequestBody User user,
+			HttpSession session) {
+		session.setAttribute("currentUser", user);
+		System.out.println("made it to the API");
+		users.add(user);
+		printUserData();
+		return user;
 	}
 	
 
@@ -45,10 +41,6 @@ public class UserService {
 	 */
 	@GetMapping("/api/user")
 	public List<User> findAllUser() {
-		if (! this.initialized) {
-			initialize();
-			this.initialized = true;
-		}
 		printUserData(); //used for testing
 		return users;
 	}

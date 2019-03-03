@@ -16,6 +16,13 @@ public class User {
 		this.password = password;
 		this.role = role;
 	}
+	public User(String username, String firstName, String lastName, String password,  String role) {
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.role = role;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -50,6 +57,8 @@ public class User {
 		return this.role;
 	}
 	public void setRole(String role) {
-		this.role=role;
+		if (role.equals("STUDENT") || role.equals("FACULTY")) {
+			this.role=role;
+		}
 	}
 }
