@@ -1,6 +1,7 @@
 package com.example.webdevserverjava.services;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +20,8 @@ import com.example.webdevserverjava.model.User;
 
 @RestController
 public class UserService {
+	final String origins = "http://localhost:3000";
+	
 
 	List<User> users = new ArrayList<User>();
 	
@@ -32,13 +35,18 @@ public class UserService {
 	 * @return
 	 */
 	@PostMapping("/api/register")
-	@CrossOrigin
+	@CrossOrigin(origins=origins ,allowCredentials="true")
 	public User register (@RequestBody User user,
 			HttpSession session) {
-		session.setAttribute("currentUser", user);
 		int id = generateID();
 		user.setId(id);
 		users.add(user);
+		session.setAttribute("currentUser", user);
+		boolean current = session.getAttribute("currentUser")==null;
+		System.out.println("currentUser? " + current);
+		if (! current) {
+			System.out.println("Current user is: " + session.getAttribute("currentUser").toString());
+		}
 		printUserData();
 		return user;
 	}
@@ -51,7 +59,7 @@ public class UserService {
 	  if( user.getUsername().equals(credentials.getUsername())
 	   && user.getPassword().equals(credentials.getPassword())) {
 	    session.setAttribute("currentUser", user);
-	    System.out.println("Successfully logged in user " + credentials.getUsername());
+	    System.out.println("Successfully logged in user " + session.getAttribute("currentUser").toString());
 	    return user;
 	  }
 	 }
@@ -65,11 +73,16 @@ public class UserService {
 	 * @param session
 	 * @return
 	 */
-	@GetMapping("/api/profile")
-	@CrossOrigin
+	@PostMapping("/api/profile")
+	@CrossOrigin(origins=origins ,allowCredentials="true")
 	public User profile(HttpSession session) {
 		User currentUser = (User)session.getAttribute("currentUser");
-		System.out.println("Current user is: " + currentUser.getUsername());
+		boolean current = session.getAttribute("currentUser") ==null;
+		System.out.println(current);
+		if (!current) {
+			System.out.println(session.getAttribute("currentUser"));
+		}
+		
 		return currentUser;
 	}
 	
@@ -261,7 +274,7 @@ public class UserService {
 		for (User u : users) {
 			System.out.println("User "+i);
 			System.out.println("ID: " + u.getId());
-			System.out.println("Username0: " + u.getUsername());
+			System.out.println("Username: " + u.getUsername());
 			System.out.println("First Name: " + u.getFirstName());
 			System.out.println("Last Name: " + u.getLastName());
 			System.out.println("Password: " + u.getPassword());
