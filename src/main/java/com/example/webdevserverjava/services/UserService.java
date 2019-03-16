@@ -36,6 +36,7 @@ public class UserService {
 	@CrossOrigin(allowCredentials="true")
 	public User register (@RequestBody User user,
 			HttpSession session) {
+		System.out.println("User sent to register: " + user.toString());
 		int id = generateID();
 		user.setId(id);
 		users.add(user);
@@ -43,9 +44,8 @@ public class UserService {
 		boolean current = session.getAttribute("currentUser")==null;
 		System.out.println("currentUser? " + current);
 		if (! current) {
-			System.out.println("Current user is: " + session.getAttribute("currentUser").toString());
+			System.out.println("Current user in register is: " + session.getAttribute("currentUser").toString());
 		}
-		printUserData();
 		return user;
 	}
 	
@@ -84,7 +84,7 @@ public class UserService {
 			System.out.println("From profile: current user is " + session.getAttribute("currentUser"));
 		}
 		if (currentUser == null) {
-			System.out.println("Current user is null");
+			System.out.println("From profile: Current user is null");
 			return null;
 		}
 		return currentUser;
