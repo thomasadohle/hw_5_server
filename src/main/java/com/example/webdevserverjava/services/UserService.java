@@ -1,7 +1,6 @@
 package com.example.webdevserverjava.services;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Random;
-
 import javax.servlet.http.HttpSession;
 
 import com.example.webdevserverjava.model.User;
@@ -52,17 +50,20 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/login")
-	@CrossOrigin
+	@CrossOrigin(origins=origins ,allowCredentials="true")
 	public User login(	@RequestBody User credentials,
 	HttpSession session) {
-	 for (User user : users) {
-	  if( user.getUsername().equals(credentials.getUsername())
-	   && user.getPassword().equals(credentials.getPassword())) {
-	    session.setAttribute("currentUser", user);
-	    System.out.println("Successfully logged in user " + session.getAttribute("currentUser").toString());
-	    return user;
-	  }
+		System.out.println("attempting to log in user with un: " +credentials.getUsername() + " and pw: " + credentials.getPassword());
+		
+		for (User user : users) {
+			if( user.getUsername().equals(credentials.getUsername())
+					&& user.getPassword().equals(credentials.getPassword())) {
+			    session.setAttribute("currentUser", user);
+			    System.out.println("Successfully logged in user " + session.getAttribute("currentUser").toString());
+			    return user;
+			  }
 	 }
+	 System.out.println("could not find user");
 	 return null;
 	}
 
@@ -80,9 +81,12 @@ public class UserService {
 		boolean current = session.getAttribute("currentUser") ==null;
 		System.out.println(current);
 		if (!current) {
-			System.out.println(session.getAttribute("currentUser"));
+			System.out.println("From profile: current user is " + session.getAttribute("currentUser"));
 		}
-		
+		if (currentUser == null) {
+			System.out.println("Current user is null");
+			return null;
+		}
 		return currentUser;
 	}
 	
