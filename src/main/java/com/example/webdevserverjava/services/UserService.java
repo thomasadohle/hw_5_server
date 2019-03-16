@@ -18,7 +18,7 @@ import com.example.webdevserverjava.model.User;
 
 @RestController
 public class UserService {
-	final String origins = "http://www.pacific-lake-81602.herokuapp.com";
+	final String origins = "https://www.pacific-lake-81602.herokuapp.com";
 	
 
 	List<User> users = new ArrayList<User>();

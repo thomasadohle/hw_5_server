@@ -23,7 +23,7 @@ import com.example.webdevserverjava.model.User;
 
 @RestController
 public class LessonService {
-	final String origins = "http://www.pacific-lake-81602.herokuapp.com";
+	final String origins = "https://www.pacific-lake-81602.herokuapp.com";
 	
 	List<Lesson> lessons = new ArrayList<Lesson>();
 	List<Integer> idList = new ArrayList<Integer>();
