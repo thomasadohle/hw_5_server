@@ -22,7 +22,7 @@ import com.example.webdevserverjava.model.User;
 
 @RestController
 public class ModuleService {
-	final String origins = "http://localhost:3000";
+	final String origins = "http://www.pacific-lake-81602.herokuapp.com";
 	
 	List<Module> modules = new ArrayList<Module>();
 	List<Integer> idList = new ArrayList<Integer>();
