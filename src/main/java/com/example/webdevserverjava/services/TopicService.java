@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 public class TopicService {
-	final String origins = "https://www.pacific-lake-81602.herokuapp.com";
+	final String origins = "https://pacific-lake-81602.herokuapp.com";
 	List<Topic> topics = new ArrayList<Topic>();
 	
 	@PostMapping("/api/lessons/{lid}/topic")
