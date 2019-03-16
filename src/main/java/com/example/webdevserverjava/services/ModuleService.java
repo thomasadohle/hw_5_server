@@ -28,7 +28,7 @@ public class ModuleService {
 	List<Integer> idList = new ArrayList<Integer>();
 	
 	@PostMapping("/api/courses/{cid}/modules")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Module createModule(@RequestBody Module module,
 			HttpSession session, @PathVariable (value="cid") int courseId) {
 //		int id = generateID();
@@ -41,7 +41,7 @@ public class ModuleService {
 	}
 	
 	@PutMapping("/api/modules/{mid}")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Module updateModule(@RequestBody Module module, @PathVariable(value="mid") int moduleId) {
 		for (Module m : this.modules) {
 			if (m.getID() == moduleId) {
@@ -55,7 +55,7 @@ public class ModuleService {
 	}
 	
 	@GetMapping("/api/courses/{cid}/modules")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public List<Module> findAllModules(@PathVariable(value="cid") int courseId){
 		List<Module> modules = new ArrayList<>();
 		for (Module m : this.modules) {
@@ -67,7 +67,7 @@ public class ModuleService {
 	}
 	
 	@GetMapping("/api/modules/{mid}")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Module findModuleById(@PathVariable(value="mid")  int id, HttpSession session) {
 		for (Module m : this.modules) {
 			if (m.getID() == id) {
@@ -83,7 +83,7 @@ public class ModuleService {
 	
 	
 	@DeleteMapping("/api/modules/{mid}")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Module deleteModule(@PathVariable(value="mid") int id) {
 		for (Module m : this.modules) {
 			if (m.getID() == id) {

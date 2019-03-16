@@ -24,7 +24,7 @@ public class TopicService {
 	List<Topic> topics = new ArrayList<Topic>();
 	
 	@PostMapping("/api/lessons/{lid}/topic")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Topic createTopic(@RequestBody Topic topic,
 			HttpSession session, @PathVariable (value="lid") int lessonId) {
 		topic.setLessonId(lessonId);
@@ -35,7 +35,7 @@ public class TopicService {
 	}
 	
 	@PutMapping("/api/topics/{tid}")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Topic updateTopic(@RequestBody Topic topic, @PathVariable(value="tid") int topicId) {
 		for (Topic t : this.topics) {
 			if (t.getId() == topicId) {
@@ -50,7 +50,7 @@ public class TopicService {
 	
 	//           /api/lessons/2078786103/topics
 	@GetMapping("/api/lessons/{lid}/topics")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public List<Topic> findAllTopics(@PathVariable(value="lid") int lessonId){
 		System.out.println("findAllTopics called");
 		List<Topic> topicsForLesson = new ArrayList<>();
@@ -63,7 +63,7 @@ public class TopicService {
 	}
 	
 	@GetMapping("/api/topics/{tid}")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Topic findTopicById(@PathVariable(value="tid")  int topicId, HttpSession session) {
 		for (Topic t : this.topics) {
 			if (t.getId() == topicId) {
@@ -77,7 +77,7 @@ public class TopicService {
 	}
 	
 	@DeleteMapping("/api/topics/{tid}")
-	@CrossOrigin(origins=origins ,allowCredentials="true")
+	@CrossOrigin(allowCredentials="true")
 	public Topic deleteTopic(@PathVariable(value="tid") int topicId) {
 		for (Topic t : this.topics) {
 			if (t.getId() == topicId) {
