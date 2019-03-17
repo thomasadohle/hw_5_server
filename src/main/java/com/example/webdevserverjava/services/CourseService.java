@@ -21,7 +21,7 @@ import com.example.webdevserverjava.model.Lesson;
 import com.example.webdevserverjava.model.Module;
 import com.example.webdevserverjava.model.Topic;
 import com.example.webdevserverjava.model.User;
-
+@CrossOrigin
 @RestController
 public class CourseService {
 	final String origins = "https://pacific-lake-81602.herokuapp.com";
@@ -30,7 +30,7 @@ public class CourseService {
 	List<Integer> idList = new ArrayList<Integer>();
 	
 	@GetMapping("/test/courses")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public String testCourses () {
 		String out = "";
 		for (Course c : this.courses) {
@@ -41,7 +41,7 @@ public class CourseService {
 	}
 	
 	@PostMapping("/api/courses")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Course createCourse(@RequestBody Course course,
 			HttpSession session) {
 		User author = (User) session.getAttribute("currentUser");
@@ -56,7 +56,7 @@ public class CourseService {
 
 	
 	@GetMapping("/api/courses")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public List<Course> findAllCourses(HttpSession session) {
 		List<Course> userCourses = new ArrayList<>();
 		User currentUser = (User)session.getAttribute("currentUser");
@@ -72,7 +72,7 @@ public class CourseService {
 	}
 	
 	@GetMapping("/api/courses/{cid}")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Course findCourseById(@PathVariable(value="cid")  int id, HttpSession session) {
 		for (Course c : this.courses) {
 			if (c.getID() == id) {
@@ -86,7 +86,7 @@ public class CourseService {
 	}
 	
 	@DeleteMapping("/api/courses/{cid}")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Course deleteCourse(@PathVariable(value="cid") int id) {
 		for (Course c : this.courses) {
 			if (c.getID() == id) {
@@ -100,7 +100,7 @@ public class CourseService {
 	}
 	
 	@PutMapping("/api/courses/{cid}")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Course updateCourse(@PathVariable(value="cid") int id, @RequestBody Course course) {
 		for (Course c : this.courses) {
 			if (c.getID() == id) {

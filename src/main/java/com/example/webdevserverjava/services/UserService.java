@@ -15,7 +15,7 @@ import java.util.Random;
 import javax.servlet.http.HttpSession;
 
 import com.example.webdevserverjava.model.User;
-
+@CrossOrigin
 @RestController
 public class UserService {
 	final String origins = "https://pacific-lake-81602.herokuapp.com";
@@ -34,7 +34,7 @@ public class UserService {
 	 */
 	//            /api/register
 	@PostMapping("/api/register")
-	@CrossOrigin(allowCredentials="true", allowedHeaders="*")
+	//@CrossOrigin(allowCredentials="true", allowedHeaders="*")
 	public User register (@RequestBody User user,
 			HttpSession session) {
 		System.out.println("User sent to register: " + user.toString());
@@ -51,7 +51,7 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/login")
-	@CrossOrigin(allowCredentials="true",allowedHeaders="*")
+	//@CrossOrigin(allowCredentials="true",allowedHeaders="*")
 	public User login(	@RequestBody User credentials,
 	HttpSession session) {
 		System.out.println("attempting to log in user with un: " +credentials.getUsername() + " and pw: " + credentials.getPassword());
@@ -76,7 +76,7 @@ public class UserService {
 	 * @return
 	 */
 	@PostMapping("/api/profile")
-	@CrossOrigin(allowCredentials="true",allowedHeaders="*")
+	//@CrossOrigin(allowCredentials="true",allowedHeaders="*")
 	public User profile(HttpSession session) {
 		User currentUser = (User)session.getAttribute("currentUser");
 		boolean current = session.getAttribute("currentUser") ==null;
@@ -92,7 +92,7 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/logout")
-	@CrossOrigin
+	//@CrossOrigin
 	public void logout (HttpSession session) {
 		System.out.println("User logged out");
 		session.invalidate();

@@ -21,6 +21,7 @@ import com.example.webdevserverjava.model.Lesson;
 import com.example.webdevserverjava.model.Module;
 import com.example.webdevserverjava.model.User;
 
+@CrossOrigin
 @RestController
 public class LessonService {
 	final String origins = "https://pacific-lake-81602.herokuapp.com";
@@ -29,7 +30,7 @@ public class LessonService {
 	List<Integer> idList = new ArrayList<Integer>();
 	
 	@PostMapping("/api/modules/{mid}/lesson")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Lesson createModule(@RequestBody Lesson lesson,
 			HttpSession session, @PathVariable (value="mid") int moduleId) {
 //		int id = generateID();
@@ -42,7 +43,7 @@ public class LessonService {
 	}
 	
 	@PutMapping("/api/lessons/{lid}")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Lesson updateLesson(@RequestBody Lesson lesson, @PathVariable(value="lid") int lessonId) {
 		for (Lesson l : this.lessons) {
 			if (l.getId() == lessonId) {
@@ -56,7 +57,7 @@ public class LessonService {
 	}
 	
 	@GetMapping("/api/modules/{mid}/lessons")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public List<Lesson> findAllLessons(@PathVariable(value="mid") int moduleId){
 		List<Lesson> lessons = new ArrayList<>();
 		for (Lesson l : this.lessons) {
@@ -68,7 +69,7 @@ public class LessonService {
 	}
 	
 	@GetMapping("/api/lessons/{lid}")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Lesson findLessonById(@PathVariable(value="lid")  int id, HttpSession session) {
 		for (Lesson l : this.lessons) {
 			if (l.getId() == id) {
@@ -84,7 +85,7 @@ public class LessonService {
 	
 	
 	@DeleteMapping("/api/lessons/{lid}")
-	@CrossOrigin(allowCredentials="true")
+	//@CrossOrigin(allowCredentials="true")
 	public Lesson deleteLesson(@PathVariable(value="lid") int id) {
 		for (Lesson l : this.lessons) {
 			if (l.getId() == id) {
