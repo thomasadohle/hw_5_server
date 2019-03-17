@@ -32,8 +32,9 @@ public class UserService {
 	 * @param session
 	 * @return
 	 */
+	//            /api/register
 	@PostMapping("/api/register")
-	@CrossOrigin(allowCredentials="true")
+	@CrossOrigin(allowCredentials="true", allowedHeaders="*")
 	public User register (@RequestBody User user,
 			HttpSession session) {
 		System.out.println("User sent to register: " + user.toString());
@@ -50,7 +51,7 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/login")
-	@CrossOrigin(allowCredentials="true")
+	@CrossOrigin(allowCredentials="true",allowedHeaders="*")
 	public User login(	@RequestBody User credentials,
 	HttpSession session) {
 		System.out.println("attempting to log in user with un: " +credentials.getUsername() + " and pw: " + credentials.getPassword());
@@ -75,7 +76,7 @@ public class UserService {
 	 * @return
 	 */
 	@PostMapping("/api/profile")
-	@CrossOrigin(allowCredentials="true")
+	@CrossOrigin(allowCredentials="true",allowedHeaders="*")
 	public User profile(HttpSession session) {
 		User currentUser = (User)session.getAttribute("currentUser");
 		boolean current = session.getAttribute("currentUser") ==null;
