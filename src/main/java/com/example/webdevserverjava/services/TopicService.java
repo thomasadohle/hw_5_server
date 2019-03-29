@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Random;
 import javax.servlet.http.HttpSession;
 
-@CrossOrigin
-@RestController(allowCredentials="true")
+@CrossOrigin(allowCredentials="true")
+@RestController
 public class TopicService {
 	final String origins = "https://pacific-lake-81602.herokuapp.com";
 	List<Topic> topics = new ArrayList<Topic>();
