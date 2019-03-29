@@ -15,7 +15,7 @@ import java.util.Random;
 import javax.servlet.http.HttpSession;
 
 import com.example.webdevserverjava.model.User;
-@CrossOrigin
+@CrossOrigin(allowCredentials="true")
 @RestController
 public class UserService {
 	final String origins = "https://pacific-lake-81602.herokuapp.com";
