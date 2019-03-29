@@ -21,7 +21,7 @@ import com.example.webdevserverjava.model.Lesson;
 import com.example.webdevserverjava.model.Module;
 import com.example.webdevserverjava.model.Topic;
 import com.example.webdevserverjava.model.User;
-@CrossOrigin
+@CrossOrigin(allowCredentials="true")
 @RestController
 public class CourseService {
 	final String origins = "https://pacific-lake-81602.herokuapp.com";

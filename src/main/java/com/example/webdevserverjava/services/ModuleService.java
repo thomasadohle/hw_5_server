@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import com.example.webdevserverjava.model.Course;
 import com.example.webdevserverjava.model.Module;
 import com.example.webdevserverjava.model.User;
-@CrossOrigin
+@CrossOrigin(allowCredentials="true")
 @RestController
 public class ModuleService {
 	final String origins = "https://pacific-lake-81602.herokuapp.com";
